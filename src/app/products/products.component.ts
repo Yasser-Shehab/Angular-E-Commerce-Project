@@ -65,8 +65,8 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
   onClick(){
-    this.isPurshased = true;
-    this.msg = "Thanks For Purchasing From Our Store"
+    this.isPurshased = !this.isPurshased;
+    this.msg = `Thanks For Purchasing From Our Store ${this.clientName}`
   }
 
 }
