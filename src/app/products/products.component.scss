@@ -1,9 +1,32 @@
 .productList{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+  .card-img-top{
+    width: 200px;
+    height: 350px;
+    margin: 0 auto;
+  }
+  .card{
+    margin: 10px;
+  }
+
 }
 
-.card{
-  margin: 10px;
+
+
+#btn-products{
+  margin:10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  .userInput{
+
+    button{
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+  }
 }
+

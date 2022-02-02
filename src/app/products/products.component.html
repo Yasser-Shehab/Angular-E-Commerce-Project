@@ -1,26 +1,47 @@
+<!-- Dropdown -->
+<div id="btn-products">
+ <div class="btn-group">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Categories
+  </button>
+  <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" *ngFor="let category of categoryList" href="#">{{category.name}}</a></li>
+  </ul>
+ </div>
+ <div class="userInput">
+   <input type="text" [(ngModel)]="clientName" placeholder="Name...">
+ </div>
+ <button (click)="onClick()">Buy</button>
+ <div *ngIf="isPurshased ; then thenBlock;else elseBlock"></div>
+ <ng-template #thenBlock>
+  <h2>
+    {{msg}}
+    <table>
+      <tr>
+        <th>Name:</th>
+      </tr>
+      <tr>
+        <td>{{clientName}}</td>
+      </tr>
+    </table>
+    
+  </h2>
+</ng-template>
+<ng-template  #elseBlock>
+  <h2>
+      You haven't Purshased Anything
+  </h2>
+</ng-template>
+</div>
+<!-- Dropdown -->
+
 <div class="productList">
-  <div class="card" style="width: 18rem;">
-    <img [src]="storeLogo" class="card-img-top" alt="...">
+  <div class="card" *ngFor="let product of productList" style="width: 18rem;">
+    <img [src]="product.img" appHighlight class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{storeName}}</h5>
-      <p class="card-text">We We offer an explicit discount of {{discount}}</p>
-      <a href="#" class="btn btn-primary">Buy</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img [src]="storeLogo" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{storeName}}</h5>
-      <p class="card-text">We We offer an explicit discount of {{discount}}</p>
-      <a href="#" class="btn btn-primary">Buy</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img [src]="storeLogo" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{storeName}}</h5>
-      <p class="card-text">We We offer an explicit discount of {{discount}}</p>
-      <a href="#" class="btn btn-primary">Buy</a>
+      <h5 class="card-title">{{product.name|uppercase}}</h5>
+      <p class="card-text" *ngIf="discount">We We offer an explicit discount of {{discount|percent}}</p>
+      <a href="#" class="btn btn-primary">Add To Cart</a>
     </div>
   </div>
 </div>

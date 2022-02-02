@@ -1,5 +1,5 @@
-import { ICategory } from './../Shared Classes & Types/ICategory';
 import { IProduct } from './../Shared Classes & Types/IProduct';
+import { ICategory } from './../Shared Classes & Types/ICategory';
 import { DiscountOffers } from '../Shared Classes & Types/enums';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,34 +19,35 @@ export class ProductsComponent implements OnInit {
   categoryList:ICategory[];
   clientName:string;
   isPurshased:boolean;
+  msg = ""
 
   constructor() {
     this.discount = DiscountOffers.tenPercent;
     this.storeName = "lorem ipsum";
     this.storeLogo = "../../assets/imgs/parrot.jpg";
     this.clientName = "Khaled"
-    this.isPurshased = true;
+    this.isPurshased = false;
     this.productList = [
       {
         id:1,
-        name:"product1",
+        name:"Samsung Galaxy A03s",
         quantity:10,
         price:25,
-        img:"palceholder.jpg"
+        img:"../../assets/imgs/Mobile1.jpg"
       },
       {
         id:1,
-        name:"product2",
+        name:"Xiaomi Redmi 10",
         quantity:5,
         price:50,
-        img:"palceholder.jpg"
+        img:"../../assets/imgs/Mobile2.jpg"
       },
       {
         id:1,
-        name:"product3",
+        name:"Samsung Galaxy A52s",
         quantity:7,
         price:60,
-        img:"palceholder.jpg"
+        img:"../../assets/imgs/Mobile3.jpg"
       }
     ]
     this.categoryList = [
@@ -57,13 +58,15 @@ export class ProductsComponent implements OnInit {
       {
         id:2,
         name:"Category2"
-      },
+      }
     ]
    
    }
-   
-
   ngOnInit(): void {
+  }
+  onClick(){
+    this.isPurshased = true;
+    this.msg = "Thanks For Purchasing From Our Store"
   }
 
 }
