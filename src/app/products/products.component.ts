@@ -2,6 +2,7 @@ import { IProduct } from './../Shared Classes & Types/IProduct';
 import { ICategory } from './../Shared Classes & Types/ICategory';
 import { DiscountOffers } from '../Shared Classes & Types/enums';
 import { Component, OnInit } from '@angular/core';
+import { ProductServiceService } from '../services/product-service.service';
 
 
 
@@ -21,35 +22,13 @@ export class ProductsComponent implements OnInit {
   isPurshased:boolean;
   msg = ""
 
-  constructor() {
+  constructor(private productService:ProductServiceService) {
     this.discount = DiscountOffers.tenPercent;
     this.storeName = "lorem ipsum";
     this.storeLogo = "../../assets/imgs/parrot.jpg";
     this.clientName = "Khaled"
     this.isPurshased = false;
-    this.productList = [
-      {
-        id:1,
-        name:"Samsung Galaxy A03s",
-        quantity:10,
-        price:25,
-        img:"../../assets/imgs/Mobile1.jpg"
-      },
-      {
-        id:1,
-        name:"Xiaomi Redmi 10",
-        quantity:5,
-        price:50,
-        img:"../../assets/imgs/Mobile2.jpg"
-      },
-      {
-        id:1,
-        name:"Samsung Galaxy A52s",
-        quantity:7,
-        price:60,
-        img:"../../assets/imgs/Mobile3.jpg"
-      }
-    ]
+    this.productList = [];
     this.categoryList = [
       {
         id:1,
@@ -68,5 +47,8 @@ export class ProductsComponent implements OnInit {
     this.isPurshased = !this.isPurshased;
     this.msg = `Thanks For Purchasing From Our Store ${this.clientName}`
   }
-
+  renderValues(){
+    this.productList = this.productService.getAllProducts();
+  }
+  
 }
