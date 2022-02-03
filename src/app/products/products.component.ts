@@ -48,7 +48,8 @@ export class ProductsComponent implements OnInit {
     this.msg = `Thanks For Purchasing From Our Store ${this.clientName}`
   }
   renderValues(){
-    this.productList = this.productService.getAllProducts();
+      this.productList = this.productService.getAllProducts();
   }
+  
   
 }
