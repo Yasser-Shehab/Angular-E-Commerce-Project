@@ -1,0 +1,3 @@
+Full : You have to write the Exact Url to access the page. (Strict)
+Prefix : You can write after the path Url and still access the Page. (Not Very Strict)
+
