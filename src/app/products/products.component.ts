@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
    
    }
   ngOnInit(): void {
+    this.renderValues();
   }
   onClick(){
     this.isPurshased = !this.isPurshased;
