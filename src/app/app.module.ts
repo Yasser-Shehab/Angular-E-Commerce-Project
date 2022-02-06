@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'',redirectTo: '/home', pathMatch:'full'},
@@ -19,6 +22,8 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'users',component:UsersComponent},
   {path:'posts',component:PostsComponent},
+  {path: 'register',component:RegisterComponent},
+  {path: 'login',component:LoginComponent}
   
 ];
 
@@ -32,7 +37,10 @@ const routes: Routes = [
     HighlightDirective,
     HomeComponent,
     UsersComponent,
-    PostsComponent
+    PostsComponent,
+    ProductsListComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

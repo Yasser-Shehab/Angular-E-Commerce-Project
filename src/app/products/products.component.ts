@@ -13,7 +13,6 @@ import { ProductServiceService } from '../services/product-service.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  discount:DiscountOffers;
   storeName:string;
   storeLogo:string;
   productList:IProduct[];
@@ -23,7 +22,6 @@ export class ProductsComponent implements OnInit {
   msg = ""
 
   constructor(private productService:ProductServiceService) {
-    this.discount = DiscountOffers.tenPercent;
     this.storeName = "lorem ipsum";
     this.storeLogo = "../../assets/imgs/parrot.jpg";
     this.clientName = "Khaled"
@@ -51,6 +49,28 @@ export class ProductsComponent implements OnInit {
   renderValues(){
       this.productList = this.productService.getAllProducts();
   }
+  prodDiscount(){
+    let allProds = this.productService.getAllProducts()
+    let discountProds = [];
+    for(let item of allProds){
+      if(item.discount != 'No Discount'){
+        discountProds.push(item)
+      }
+    }
+    this.productList = discountProds;
+  }
+  prodNoDiscount(){
+    let allProds = this.productService.getAllProducts()
+    let discountProds = [];
+    for(let item of allProds){
+      if(item.discount == 'No Discount'){
+        discountProds.push(item)
+      }
+    }
+    this.productList = discountProds;
+    
+  }
+
   
   
 }

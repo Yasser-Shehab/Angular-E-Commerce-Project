@@ -15,7 +15,9 @@
 </div>
 <!-- BuyInput -->
 <div class="buyInput">
-  <button (click)="onClick()">Buy</button>
+  <button (click)="onClick()">Buy</button><br>
+  <button (click)="prodDiscount()">Show With Discount</button>
+  <button (click)="prodNoDiscount()">Show Without Discount</button>
  <div *ngIf="isPurshased ; then thenBlock;else elseBlock"></div>
 <ng-template #thenBlock>
  <h2>
@@ -38,9 +40,9 @@
     <img [src]="product.img" appHighlight class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{product.name|uppercase}}</h5>
-      <p class="card-text" *ngIf="discount != 'No Discount'; then showDiscount"></p>
+      <p class="card-text" *ngIf="product.discount != 'No Discount'; then showDiscount"></p>
       <ng-template #showDiscount>
-        <p>We We offer an explicit discount of {{discount|percent}}</p>
+        <p>We We offer an explicit discount of {{product.discount|percent}}</p>
       </ng-template>
       <a href="#" (click)="onClick()" class="btn btn-primary">Purchase</a>
     </div>
