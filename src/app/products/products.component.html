@@ -17,6 +17,7 @@
 <div class="buyInput">
   <button (click)="onClick()">Buy</button><br>
   <button (click)="prodDiscount()">Show With Discount</button>
+  <button (click)="renderValues()">Show All Products</button>
   <button (click)="prodNoDiscount()">Show Without Discount</button>
  <div *ngIf="isPurshased ; then thenBlock;else elseBlock"></div>
 <ng-template #thenBlock>
