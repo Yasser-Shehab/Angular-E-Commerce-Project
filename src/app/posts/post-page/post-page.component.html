@@ -1,9 +1,10 @@
-<ng-container *ngFor="let post of postsList; let i = index">
+<ng-container *ngFor="let post of postData; let i = index">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">{{post.title}}</h5>
       <p class="card-text">{{post.body}}</p>
-      <button (click)="goToPost(post)" class="card-link">View Post</button>
+      <!-- <a href="#" (click)="goToPost(post)" class="card-link">View Post</a> -->
     </div>
   </div>
 </ng-container>
+

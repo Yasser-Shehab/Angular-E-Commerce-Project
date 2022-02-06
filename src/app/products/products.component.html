@@ -16,9 +16,9 @@
 <!-- BuyInput -->
 <div class="buyInput">
   <button (click)="onClick()">Buy</button><br>
-  <button (click)="prodDiscount()">Show With Discount</button>
+  <button (click)="showDiscount()">Show With Discount</button>
   <button (click)="renderValues()">Show All Products</button>
-  <button (click)="prodNoDiscount()">Show Without Discount</button>
+  <button (click)="showNoDiscount()">Show Without Discount</button>
  <div *ngIf="isPurshased ; then thenBlock;else elseBlock"></div>
 <ng-template #thenBlock>
  <h2>
@@ -31,12 +31,12 @@
  </h2>
 </ng-template>
 </div>
-
+<router-outlet></router-outlet>
 
 <!-- BuyInput -->
 <!-- Dropdown -->
 
-<div class="productList">
+<!-- <div class="productList">
   <div class="card" *ngFor="let product of productList" style="width: 18rem;">
     <img [src]="product.img" appHighlight class="card-img-top" alt="...">
     <div class="card-body">
@@ -48,6 +48,7 @@
       <a href="#" (click)="onClick()" class="btn btn-primary">Purchase</a>
     </div>
   </div>
-</div>
+</div> -->
+
 
 

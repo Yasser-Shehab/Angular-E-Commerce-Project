@@ -3,7 +3,7 @@ import { ICategory } from './../Shared Classes & Types/ICategory';
 import { DiscountOffers } from '../Shared Classes & Types/enums';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
-
+import { ActivatedRoute,Router } from '@angular/router';
 
 
 
@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   isPurshased:boolean;
   msg = ""
 
-  constructor(private productService:ProductServiceService) {
+  constructor(private productService:ProductServiceService,private router:Router, private route:ActivatedRoute) {
     this.storeName = "lorem ipsum";
     this.storeLogo = "../../assets/imgs/parrot.jpg";
     this.clientName = "Khaled"
@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
   renderValues(){
       this.productList = this.productService.getAllProducts();
   }
-  prodDiscount(){
+/*   prodDiscount(){
     let allProds = this.productService.getAllProducts()
     let discountProds = [];
     for(let item of allProds){
@@ -58,19 +58,14 @@ export class ProductsComponent implements OnInit {
       }
     }
     this.productList = discountProds;
+  } */
+  
+  showDiscount(){
+    this.router.navigate(['productDiscount'], {relativeTo:this.route})
   }
-  prodNoDiscount(){
-    let allProds = this.productService.getAllProducts()
-    let discountProds = [];
-    for(let item of allProds){
-      if(item.discount == 'No Discount'){
-        discountProds.push(item)
-      }
-    }
-    this.productList = discountProds;
-    
+  showNoDiscount(){
+    this.router.navigate(['productsNoDiscount'], {relativeTo:this.route})
   }
-
   
   
 }

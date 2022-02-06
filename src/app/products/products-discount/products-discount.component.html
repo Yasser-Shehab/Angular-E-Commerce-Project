@@ -1,0 +1,13 @@
+<div class="productList">
+  <div class="card" *ngFor="let product of discountedProduct" style="width: 18rem;">
+    <img [src]="product.img" appHighlight class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name|uppercase}}</h5>
+      <p class="card-text" *ngIf="product.discount != 'No Discount'; then showDiscount"></p>
+      <ng-template #showDiscount>
+        <p>We We offer an explicit discount of {{product.discount|percent}}</p>
+      </ng-template>
+      <a href="#"  class="btn btn-primary">Purchase</a>
+    </div>
+  </div>
+</div>

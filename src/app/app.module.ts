@@ -12,18 +12,26 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
-import { ProductsListComponent } from './products/products-list/products-list.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProductsDiscountComponent } from './products/products-discount/products-discount.component';
+import { ProductsWithoutDiscountComponent } from './products/products-without-discount/products-without-discount.component';
+import { PostPageComponent } from './posts/post-page/post-page.component';
 
 const routes: Routes = [
   {path:'',redirectTo: '/home', pathMatch:'full'},
-  {path:'products',component:ProductsComponent},
+  /* {path:'products',component:ProductsComponent}, */
   {path:'home',component:HomeComponent},
   {path:'users',component:UsersComponent},
   {path:'posts',component:PostsComponent},
+  {path:'postsDetail/:id',component:PostPageComponent},
+  {path:'products',component:ProductsComponent,
+    children:[
+      {path:'productDiscount',component:ProductsDiscountComponent},
+      {path:'productsNoDiscount',component:ProductsWithoutDiscountComponent}
+    ]},
   {path: 'register',component:RegisterComponent},
-  {path: 'login',component:LoginComponent}
+  {path: 'login',component:LoginComponent},
   
 ];
 
@@ -38,9 +46,11 @@ const routes: Routes = [
     HomeComponent,
     UsersComponent,
     PostsComponent,
-    ProductsListComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsDiscountComponent,
+    ProductsWithoutDiscountComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,

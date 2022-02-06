@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute,ParamMap } from '@angular/router';
 import { UserService } from './../services/user/user.service';
 import { PostsService } from './../services/posts/posts.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,13 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-
-  constructor(private PostsService:PostsService) { }
   postsList:any;
   errorMsg:any;
-  viewPost(){
-    
-  }
+  constructor(private PostsService:PostsService,private router:Router,private activatedRoute:ActivatedRoute) { }
+ 
+  
   ngOnInit(): void {
     this.PostsService.getPosts().subscribe(
       data=>{
@@ -23,8 +22,11 @@ export class PostsComponent implements OnInit {
       errorData=>{
         this.errorMsg=errorData;
       }
-      
-    )
+     )
   }
-
+  goToPost(post:any){
+    this.router.navigate(["/postsDetail",post.id])
+  }
+ 
 }
+
