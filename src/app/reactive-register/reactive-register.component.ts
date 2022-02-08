@@ -17,8 +17,10 @@ export class ReactiveRegisterComponent implements OnInit {
     userEmail:['',[Validators.email,Validators.required]],
     userPassword:['',[Validators.minLength(8),Validators.required,Validators.minLength(8)]],
     confirmPassword:[''],
+    productPrice:[''],
     comments:this.fb.array([]),
-    selectSocial:['']
+    selectSocial:[''],
+    subscribe:[false]
 
   },{validator:[ConfirmPasswordValidator]})
   get userName()
@@ -33,6 +35,10 @@ export class ReactiveRegisterComponent implements OnInit {
   {
     return this.registrationForm.get('userPassword');
   }
+  get productPrice()
+  {
+    return this.registrationForm.get('productPrice');
+  }
 
   get Usercomments()
   {
@@ -41,6 +47,22 @@ export class ReactiveRegisterComponent implements OnInit {
   addUserComment()
   {
     this.Usercomments.push(this.fb.control(""))
+  }
+
+  setPriceValidation()
+  {
+    this.registrationForm.get('subscribe')?.valueChanges.subscribe(checkedValue=>{
+      if(checkedValue)
+      {
+        this.productPrice?.setValidators(Validators.required)
+      }
+      else
+      {
+        this.productPrice?.clearValidators();
+      }
+      this.productPrice?.updateValueAndValidity();
+      
+    })
   }
 
 

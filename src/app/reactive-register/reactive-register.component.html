@@ -24,14 +24,24 @@
         <small class="text-danger" *ngIf="userPassword?.errors?.['required']">Please Enter Password</small>
         <small class="text-danger" *ngIf="userPassword?.errors?.['minlength']">Min length is 8</small>
       </div>
-      
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1"  class="form-label" >Confirm Password</label>
       <input type="password" formControlName="confirmPassword" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="form-control" name="confirmPassword"   id="exampleInputPassword1">
-   <small *ngIf="registrationForm?.errors?.['misMatch']" class="text-danger">Passwords Doesn't Match</small>
+      <small *ngIf="registrationForm?.errors?.['misMatch']" class="text-danger">Passwords Doesn't Match</small>
     </div>
-    <div class="form-group">
+
+    <div class="mb-3">
+      <label>Product Discount</label>
+      <input  type="text" formControlName="number" class="form-control" [class.invalid]="productPrice?.invalid && productPrice?.touched">
+     </div>
+       <small class="text-danger" *ngIf="productPrice?.errors?.['required']">Please Enter A Price</small>
+      <div class="form-check">
+        <input class="form-check-input" (click)="setPriceValidation()" formControlName="subscribe" type="checkbox" value="" id="flexCheckChecked">
+        <label class="form-check-label" for="flexCheckChecked">Add Discount</label>
+          
+      </div>
+    <div class="mb-3">
       <select class="custom-select" formControlName="selectSocial"  name="ddlTopics">
           <option selected>
               Product You Want
