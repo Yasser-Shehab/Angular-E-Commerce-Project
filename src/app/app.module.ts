@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { RouterModule,Routes } from '@angular/router';
@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductsDiscountComponent } from './products/products-discount/products-discount.component';
 import { ProductsWithoutDiscountComponent } from './products/products-without-discount/products-without-discount.component';
 import { PostPageComponent } from './posts/post-page/post-page.component';
+import { ReactiveRegisterComponent } from './reactive-register/reactive-register.component';
 
 const routes: Routes = [
   {path:'',redirectTo: '/home', pathMatch:'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path:'productDiscount',component:ProductsDiscountComponent},
       {path:'productsNoDiscount',component:ProductsWithoutDiscountComponent}
     ]},
+  {path:'registerReactive',component:ReactiveRegisterComponent},
   {path: 'register',component:RegisterComponent},
   {path: 'login',component:LoginComponent},
   
@@ -50,12 +52,14 @@ const routes: Routes = [
     LoginComponent,
     ProductsDiscountComponent,
     ProductsWithoutDiscountComponent,
-    PostPageComponent
+    PostPageComponent,
+    ReactiveRegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
